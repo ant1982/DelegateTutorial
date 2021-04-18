@@ -14,13 +14,9 @@ class DELEGATETUTORIAL_API UDelegateWidget : public UUserWidget
 {
 	GENERATED_BODY()
 
-public:
-
-	virtual void NativeConstruct() override;
-
 protected: 
 	
-	bool Initialize() override;
+	virtual bool Initialize();
 	
 
 private:

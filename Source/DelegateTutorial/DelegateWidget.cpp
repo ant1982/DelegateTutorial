@@ -6,12 +6,6 @@
 #include "TestGameMode.h"
 #include "Engine.h"
 
-void UDelegateWidget::NativeConstruct()
-{
-	Super::NativeConstruct();
-
-}
-
 bool UDelegateWidget::Initialize()
 {
 	bool Success = Super::Initialize();
