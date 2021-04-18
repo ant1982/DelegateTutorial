@@ -28,9 +28,6 @@ private:
 	UPROPERTY(meta = (BindWidget))
 		class UTextBlock* ScoreTextField;
 
-	UPROPERTY()
-		class ATestGameMode* TGM;
-
 	UFUNCTION()
 		FText SetScoreField();
 };

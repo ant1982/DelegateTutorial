@@ -10,7 +10,6 @@ void UDelegateWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
 
-	
 }
 
 bool UDelegateWidget::Initialize()
