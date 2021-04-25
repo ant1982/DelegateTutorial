@@ -4,26 +4,32 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
-#include "DelegateWidget.generated.h"
+#include "ParentWidget.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class DELEGATETUTORIAL_API UDelegateWidget : public UUserWidget
+class DELEGATETUTORIAL_API UParentWidget : public UUserWidget
 {
 	GENERATED_BODY()
+	
 
-protected: 
-	
+public:
+
+	virtual void NativeConstruct() override;
+
+protected:
+
 	bool Initialize() override;
-	
 
 private:
 
 	UPROPERTY(meta = (BindWidget))
-		class UTextBlock* ScoreTextField;
+		class UTextBlock* ScoreText;
 
 	UFUNCTION()
 		FText SetScoreField();
+
+
 };

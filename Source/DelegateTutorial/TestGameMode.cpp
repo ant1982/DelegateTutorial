@@ -6,8 +6,6 @@
 ATestGameMode::ATestGameMode()
 {
 	Score = 0;
-
-	TestVariable = 1;
 }
 
 void ATestGameMode::SetScorePoints(int32 value)

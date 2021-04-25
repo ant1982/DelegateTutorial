@@ -24,9 +24,6 @@ public:
 	UFUNCTION()
 		int32 GetScorePoints();
 
-	UPROPERTY()
-		int32 TestVariable;
-
 private:
 
 	UPROPERTY()

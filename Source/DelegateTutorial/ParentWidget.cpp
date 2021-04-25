@@ -1,30 +1,40 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "DelegateWidget.h"
-#include "Components/TextBlock.h"
+#include "ParentWidget.h"
 #include "TestGameMode.h"
-#include "Engine.h"
+#include "Components/TextBlock.h"
 
-bool UDelegateWidget::Initialize()
+void UParentWidget::NativeConstruct()
+{
+	Super::NativeConstruct();
+}
+
+bool UParentWidget::Initialize()
 {
 	bool Success = Super::Initialize();
 
 	if (!Success) return false;
 
-	if (ScoreTextField)
+	if (ScoreText)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("ScoreTextField found"));
+		UE_LOG(LogTemp, Warning, TEXT("Score text found"));
 
 		UWorld* World = GetWorld();
+
 		if (World != nullptr)
 		{
 			ATestGameMode* TestGameMode = Cast<ATestGameMode>(World->GetAuthGameMode());
 
-			if (TestGameMode)
+			if (TestGameMode) 
 			{
-				ScoreTextField->SetText(FText::FromString("game mode set"));
-				ScoreTextField->TextDelegate.BindUFunction(this, "SetScoreField");
+				UE_LOG(LogTemp, Warning, TEXT("Game mode found"));
+
+				ScoreText->SetText(FText::FromString("Game mode set"));
+
+				ScoreText->TextDelegate.BindUFunction(this, "SetScoreField");
+
+
 			}
 		}
 	}
@@ -32,9 +42,10 @@ bool UDelegateWidget::Initialize()
 	return true;
 }
 
-FText UDelegateWidget::SetScoreField()
+FText UParentWidget::SetScoreField()
 {
 	UWorld* World = GetWorld();
+
 	if (World != nullptr)
 	{
 		ATestGameMode* TestGameMode = Cast<ATestGameMode>(World->GetAuthGameMode());
@@ -48,7 +59,6 @@ FText UDelegateWidget::SetScoreField()
 		{
 			return FText::FromString("NULL");
 		}
-
 	}
 
 	return FText::FromString("NULL");
